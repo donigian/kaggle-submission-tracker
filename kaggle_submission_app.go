@@ -4,11 +4,14 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"kaggle_submission_app/api"
 )
 
 func main() {
 	http.HandleFunc("/", index)
 	http.HandleFunc("/api/echo", echo)
+	http.HandleFunc("/api/status", status)
+	http.HandleFunc("/api/submissions", api.SubmissionHandleFunc)
 	http.ListenAndServe(port(), nil)
 }
 
@@ -29,4 +32,8 @@ func echo(w http.ResponseWriter, r *http.Request){
 	message := r.URL.Query()["message"][0]
 	w.Header().Add("Content-Type", "text/plain")
 	fmt.Fprintf(w, message)
+}
+
+func status(w http.ResponseWriter, r *http.Request){
+	w.WriteHeader(http.StatusOK)
 }
