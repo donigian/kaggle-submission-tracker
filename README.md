@@ -22,6 +22,7 @@ Submission Number | Date Submitted (Unix epoch) | Model Description       | Loca
 |14|1506291081 | Ridge w/ 2nd order feature engineering & tuning |  0.730804  | - | - |
 |15|1506371081 | Ensemble XGBoost, LDA, GBM w/ 2nd order feature engineering  | 		.7725 | - | - |
 
+**Note**: After a competition ends, I've found it useful to go back and note the private leaderboard to see how it changes relative to public and local CV score.
 
 This project is a Kaggle Submission tracker written in Go. 
 
@@ -78,3 +79,21 @@ PUT http://localhost:8080/api/submissions
 ```
 DELETE http://localhost:8080/api/submissions/3
 ```
+
+### To build Docker Image
+`docker build -t kaggle_submission_tracker:1.0.0 .`
+
+### To tag Docker Image
+`docker tag kaggle_submission_tracker:1.0.0 donigian/kaggle_submission_tracker:1.0.0`
+
+### To run Docker Container
+`docker run --name kaggle_submission_tracker --cpu-quota 50000 --memory 64m --memory-swappiness 0 -d -e "PORT=9090" -p 8080:8080 kaggle_submission_tracker:1.0.0`
+
+### Dockerhub 
+You can find built images here `https://hub.docker.com/r/donigian/kaggle_submission_tracker/`
+
+### To compile an architecture & operating specific Go binary
+`GOOS=linux GOARCH=amd64 go build`
+
+### To run docker-compose
+`docker-compose build && docker-compose up -d`
