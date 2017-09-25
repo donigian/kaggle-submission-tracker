@@ -11,7 +11,8 @@ func main() {
 	http.HandleFunc("/", index)
 	http.HandleFunc("/api/echo", echo)
 	http.HandleFunc("/api/status", status)
-	http.HandleFunc("/api/submissions", api.SubmissionHandleFunc)
+	http.HandleFunc("/api/submissions", api.SubmissionsHandleFunc)
+	http.HandleFunc("/api/submissions/", api.SubmissionHandleFunc)
 	http.ListenAndServe(port(), nil)
 }
 
@@ -25,7 +26,7 @@ func port() string {
 
 func index(w http.ResponseWriter, r *http.Request){
 	w.WriteHeader(http.StatusOK)
-	fmt.Fprintf(w, "Hi")
+	fmt.Fprintf(w, "Welcome Kaggle Submission Tracker")
 }
 
 func echo(w http.ResponseWriter, r *http.Request){

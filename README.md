@@ -32,7 +32,49 @@ To run tests:
 > `go test ./api -v`
 
 Here's a list of endpoint available:
+
+### Health endpoint for microservice
 ```
 GET http://localhost:8080/api/status
+```
+
+### Get list of all submissions
+```
 GET http://localhost:8080/api/submissions
+```
+
+### Get specific submission by submission number
+```
+GET http://localhost:8080/api/submissions/3
+```
+
+### Create a new submission
+```
+POST http://localhost:8080/api/submissions
+{
+  		"SubmissionNumber": "3",
+  		"DateSubmitted": 651387237,
+  		"ModelDescription": "Baseline model",
+  		"LocalCrossValidationScore": 0.6513,
+  		"PublicLeaderBoardScore": 0.06423,
+  		"PrivateLeaderBoardScore": 0.0622
+}
+```
+
+### Modify existing submission
+```
+PUT http://localhost:8080/api/submissions
+{
+  		"SubmissionNumber": "3",
+  		"DateSubmitted": 651387237,
+  		"ModelDescription": "Modified baseline model",
+  		"LocalCrossValidationScore": 0.6513,
+  		"PublicLeaderBoardScore": 0.06423,
+  		"PrivateLeaderBoardScore": 0.0622
+}
+```
+
+### Delete a previous submission
+```
+DELETE http://localhost:8080/api/submissions/3
 ```
