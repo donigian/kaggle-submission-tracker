@@ -10,4 +10,4 @@ RUN cd ${SOURCES} && CGO_ENABLED=0 go install
 ENV PORT 8080
 EXPOSE 8080
 
-ENTRYPOINT /app/kaggle_submission_app
+ENTRYPOINT /go/bin/kaggle_submission_app
