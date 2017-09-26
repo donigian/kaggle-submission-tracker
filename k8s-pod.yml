@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kaggle-submission-tracker
+  labels:
+    language: go
+    env: test
+spec:
+  containers:
+  - image: kaggle-submission-tracker:1.0.0
+    name: kaggle-submission-tracker
+    ports:
+    - containerPort: 8080
+      protocol: TCP

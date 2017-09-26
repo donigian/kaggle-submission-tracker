@@ -97,3 +97,49 @@ You can find built images here `https://hub.docker.com/r/donigian/kaggle_submiss
 
 ### To run docker-compose
 `docker-compose build && docker-compose up -d`
+
+### To start Minicube & check status
+`minikube start && minikube status`
+
+### Basic info about Kubernetes cluster
+`kubectl cluster-info`
+
+### To launch Kubernetes dashboard
+`minikube dashboard`  
+
+### Other common Kubernetes commands
+```
+`kubectl get nodes`
+
+`kubectl get pods`
+
+`kubectl config get-contexts`
+
+`kubectl config use-context minikube`
+
+`eval $(minikube docker-env)`
+
+`kubectl create -f k8s-pod.yml`
+
+`kubectl describe pod kaggle-submission-tracker`
+
+`kubectl port-forward kaggle-submission-tracker 8080:8080`
+
+`kubectl get pods -o wide -L env`
+
+`kubectl get ns`
+
+`kubectl get deployments,pods,rs`
+
+`kubectl create -f k8s-deployment.yml`
+
+`kubectl describe deployment kaggle-submission-tracker`
+
+`kubectl create -f k8s-service.yml`
+
+`kubectl get services`
+
+`kubectl scale deployment kaggle-submission-tracker --replicas=5`
+
+`kubectl rollout undo deployment kaggle-submission-tracker`
+```
